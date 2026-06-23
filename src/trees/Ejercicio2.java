@@ -4,24 +4,23 @@ import structures.node.Node;
 
 public class Ejercicio2 {
 
-    public Node<Integer> invertTree(Node<Integer> root) {
-
-        invertRecursivo(root);
-
+    public Node<Integer> invert(Node<Integer> root) {
+        invertRecursively(root);
         return root;
     }
 
-    private void invertRecursivo(Node<Integer> root) {
+    private void invertRecursively(Node<Integer> actual) {
 
-        if (root == null) {
+        if (actual == null) {
             return;
         }
 
-        Node<Integer> temp = root.getLeft();
-        root.setLeft(root.getRight());
-        root.setRight(temp);
+        Node<Integer> temp = actual.getLeft();
 
-        invertRecursivo(root.getLeft());
-        invertRecursivo(root.getRight());
+        actual.setLeft(actual.getRight());
+        actual.setRight(temp);
+
+        invertRecursively(actual.getLeft());
+        invertRecursively(actual.getRight());
     }
 }

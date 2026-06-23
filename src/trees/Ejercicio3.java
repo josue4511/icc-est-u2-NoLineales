@@ -11,23 +11,29 @@ public class Ejercicio3 {
 
     public List<List<Node<Integer>>> listLevels(Node<Integer> root) {
 
-        List<List<Node<Integer>>> resultado = new ArrayList<>();
+        List<List<Node<Integer>>> resultado =
+                new ArrayList<>();
 
         if (root == null) {
             return resultado;
         }
 
-        Queue<Node<Integer>> cola = new LinkedList<>();
+        Queue<Node<Integer>> cola =
+                new LinkedList<>();
+
         cola.add(root);
 
         while (!cola.isEmpty()) {
 
-            int size = cola.size();
-            List<Node<Integer>> nivel = new ArrayList<>();
+            int cantidadNodos = cola.size();
 
-            for (int i = 0; i < size; i++) {
+            List<Node<Integer>> nivel =
+                    new ArrayList<>();
+
+            for (int i = 0; i < cantidadNodos; i++) {
 
                 Node<Integer> actual = cola.poll();
+
                 nivel.add(actual);
 
                 if (actual.getLeft() != null) {

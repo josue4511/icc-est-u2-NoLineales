@@ -1,6 +1,5 @@
 package structures.node;
 
-
 public class Node<T> {
 
     private T value;
@@ -41,4 +40,5 @@ public class Node<T> {
     public String toString() {
         return "Node [" + value + "]";
     }
+
 }

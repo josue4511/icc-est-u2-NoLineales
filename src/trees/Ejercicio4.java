@@ -5,13 +5,18 @@ import structures.node.Node;
 public class Ejercicio4 {
 
     public int maxDepth(Node<Integer> root) {
+        return maxDepthRecursivo(root);
+    }
 
-        if (root == null) {
+    private int maxDepthRecursivo(Node<Integer> actual) {
+
+        if (actual == null) {
             return 0;
         }
 
-        int izquierda = maxDepth(root.getLeft());
-        int derecha = maxDepth(root.getRight());
+        int izquierda = maxDepthRecursivo(actual.getLeft());
+
+        int derecha = maxDepthRecursivo(actual.getRight());
 
         return Math.max(izquierda, derecha) + 1;
     }

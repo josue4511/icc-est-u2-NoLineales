@@ -1,15 +1,15 @@
 package trees;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import structures.node.Node;
 
-public class BinariTree<T extends Comparable<T>> {
+public class BinariTree<T extends Comparable<? super T>> {
 
     private Node<T> root;
+    private int peso;
 
     public BinariTree() {
         this.root = null;
+        this.peso = 0;
     }
 
     public boolean isEmpty() {
@@ -21,12 +21,30 @@ public class BinariTree<T extends Comparable<T>> {
     }
 
     public void setRoot(Node<T> node) {
-        root = node;
+        this.root = node;
+        this.peso = pesoRecursivo(root);
+    }
+
+    public void setRoot(T value) {
+        this.root = new Node<>(value);
+        this.peso = 1;
+    }
+
+    public int getPeso() {
+        return peso;
     }
 
     public void insert(T value) {
         Node<T> node = new Node<>(value);
         root = insertRecursivo(root, node);
+        peso++;
+    }
+
+    public void insert(Node<T> value) {
+        if (value != null) {
+            root = insertRecursivo(root, value);
+            peso++;
+        }
     }
 
     private Node<T> insertRecursivo(Node<T> actual, Node<T> nodeInsertar) {
@@ -34,7 +52,7 @@ public class BinariTree<T extends Comparable<T>> {
             return nodeInsertar;
         }
 
-        if (actual.getValue().compareTo(nodeInsertar.getValue()) > 0) {
+        if (nodeInsertar.getValue().compareTo(actual.getValue()) < 0) {
             actual.setLeft(insertRecursivo(actual.getLeft(), nodeInsertar));
         } else {
             actual.setRight(insertRecursivo(actual.getRight(), nodeInsertar));
@@ -45,69 +63,65 @@ public class BinariTree<T extends Comparable<T>> {
 
     public void preOrder() {
         preOrderRecursivo(root);
+        System.out.println();
     }
 
     private void preOrderRecursivo(Node<T> actual) {
-        if (actual == null) return;
-
+        if (actual == null)
+            return;
         System.out.print(actual.getValue() + " ");
         preOrderRecursivo(actual.getLeft());
         preOrderRecursivo(actual.getRight());
     }
 
-    public void inOrder() {
-        inOrderRecursivo(root);
-    }
-
-    private void inOrderRecursivo(Node<T> actual) {
-        if (actual == null) return;
-
-        inOrderRecursivo(actual.getLeft());
-        System.out.print(actual.getValue() + " ");
-        inOrderRecursivo(actual.getRight());
-    }
-
     public void posOrder() {
         posOrderRecursivo(root);
+        System.out.println();
     }
 
     private void posOrderRecursivo(Node<T> actual) {
-        if (actual == null) return;
-
+        if (actual == null)
+            return;
         posOrderRecursivo(actual.getLeft());
         posOrderRecursivo(actual.getRight());
         System.out.print(actual.getValue() + " ");
     }
 
-    public void imprimirPorNiveles() {
-        if (root == null) return;
-
-        Queue<Node<T>> cola = new LinkedList<>();
-        cola.add(root);
-
-        while (!cola.isEmpty()) {
-            Node<T> actual = cola.poll();
-
-            System.out.print(actual.getValue() + " ");
-
-            if (actual.getLeft() != null)
-                cola.add(actual.getLeft());
-
-            if (actual.getRight() != null)
-                cola.add(actual.getRight());
-        }
+    public void inOrder() {
+        inOrderRecursivo(root);
+        System.out.println();
     }
 
-    public int getAltura() {
-        return getAlturaRecursivo(root);
+    private void inOrderRecursivo(Node<T> actual) {
+        if (actual == null)
+            return;
+        inOrderRecursivo(actual.getLeft());
+        System.out.print(actual.getValue() + " ");
+        inOrderRecursivo(actual.getRight());
     }
 
-    private int getAlturaRecursivo(Node<T> actual) {
-        if (actual == null) return 0;
+    public int altura() {
+        return alturaRecursivo(root);
+    }
 
-        int izq = getAlturaRecursivo(actual.getLeft());
-        int der = getAlturaRecursivo(actual.getRight());
+    private int alturaRecursivo(Node<T> actual) {
+        if (actual == null)
+            return 0;
+        int alturaIzquierda = alturaRecursivo(actual.getLeft());
+        int alturaDerecha = alturaRecursivo(actual.getRight());
 
-        return Math.max(izq, der) + 1;
+        return Math.max(alturaIzquierda, alturaDerecha) + 1;
+    }
+
+    public int pesoRecorriendo() {
+        return pesoRecursivo(root);
+    }
+
+    private int pesoRecursivo(Node<T> actual) {
+        if (actual == null)
+            return 0;
+        int pesoIzquierda = pesoRecursivo(actual.getLeft());
+        int pesoDerecha = pesoRecursivo(actual.getRight());
+        return pesoDerecha + pesoIzquierda + 1;
     }
 }

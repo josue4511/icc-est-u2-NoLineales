@@ -4,29 +4,25 @@ import structures.node.Node;
 
 public class Ejercicio1 {
 
-    public Node<Integer> insert(int[] numeros) {
-
-        Node<Integer> root = null;
-
-        for (int numero : numeros) {
-            root = insertRecursivo(root, numero);
-        }
-
-        return root;
+    public void printTree(Node<Integer> root) {
+        System.out.println("Imprimiendo el arbol:");
+        printTreeRecursivo(root, 0);
     }
 
-    private Node<Integer> insertRecursivo(Node<Integer> actual, int valor) {
+    private void printTreeRecursivo(Node<Integer> actual, int nivel) {
 
         if (actual == null) {
-            return new Node<>(valor);
+            return;
         }
 
-        if (valor < actual.getValue()) {
-            actual.setLeft(insertRecursivo(actual.getLeft(), valor));
-        } else {
-            actual.setRight(insertRecursivo(actual.getRight(), valor));
+        printTreeRecursivo(actual.getRight(), nivel + 1);
+
+        for (int i = 0; i < nivel; i++) {
+            System.out.print("    ");
         }
 
-        return actual;
+        System.out.println(actual.getValue());
+
+        printTreeRecursivo(actual.getLeft(), nivel + 1);
     }
 }
