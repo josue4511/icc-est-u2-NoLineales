@@ -30,4 +30,4 @@ Se implementaron las clases `BinaryTree` y `Person`, permitiendo la creación de
 
 Fecha: 23/06/26
 
-Descripcion: Realizamos 4 ejercicios sobre arboles y ralizar un informe
+Descripcion: El dia de hoy realizamos unos ejercicios y aparte de eso realizamos un informe.

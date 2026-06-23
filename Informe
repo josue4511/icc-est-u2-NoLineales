@@ -1,0 +1,177 @@
+# Práctica 4 – Árboles Binarios y Árboles Binarios de Búsqueda (BST)
+
+## Estudiante:
+Josue Calle
+
+## Asignatura:
+Estructura de Datos – 2do Interciclo
+
+---
+
+# Descripción del proyecto
+
+En esta práctica se trabajó con árboles binarios y árboles binarios de búsqueda (BST) utilizando Java.
+
+El objetivo fue aprender cómo se organizan los datos dentro de un árbol y cómo se pueden recorrer y modificar mediante recursividad.
+
+Se realizaron cuatro ejercicios:
+
+- Insertar valores en un árbol BST.
+- Invertir un árbol binario.
+- Recorrer el árbol por niveles.
+- Calcular la profundidad del árbol.
+
+---
+
+# Ejercicio 01: Insertar valores en un BST
+
+## Método: insert(int[] numeros)
+
+Este método recibe un arreglo de números y los va agregando al árbol.
+
+### Funcionamiento
+
+- El primer número se convierte en la raíz.
+- Los números menores se colocan a la izquierda.
+- Los números mayores se colocan a la derecha.
+- El proceso se repite hasta insertar todos los valores.
+
+### Ejemplo
+
+```java
+int[] numeros = {5, 3, 7, 2, 4, 6, 8};
+```
+
+### Resultado
+
+Se obtiene un árbol ordenado siguiendo las reglas de un árbol binario de búsqueda.
+
+---
+
+# Ejercicio 02: Invertir un árbol binario
+
+## Método: invertTree(Node root)
+
+Este ejercicio permite intercambiar los hijos izquierdo y derecho de cada nodo.
+
+### Funcionamiento
+
+- El hijo izquierdo pasa a la derecha.
+- El hijo derecho pasa a la izquierda.
+- El proceso se realiza en todos los nodos utilizando recursividad.
+
+### Resultado
+
+Se obtiene el árbol con sus ramas invertidas.
+
+---
+
+# Ejercicio 03: Recorrer el árbol por niveles
+
+## Método: listLevels(Node root)
+
+Este ejercicio permite mostrar los nodos según el nivel en el que se encuentran.
+
+### Funcionamiento
+
+- Se utiliza una cola (Queue).
+- Primero se muestra la raíz.
+- Después los nodos del segundo nivel.
+- Luego los del tercer nivel y así sucesivamente.
+
+### Ejemplo
+
+Nivel 1
+
+```
+5
+```
+
+Nivel 2
+
+```
+3    7
+```
+
+Nivel 3
+
+```
+2    4    6    8
+```
+
+### Resultado
+
+Los nodos se muestran organizados por niveles.
+
+---
+
+# Ejercicio 04: Profundidad máxima del árbol
+
+## Método: maxDepth(Node root)
+
+Este método permite conocer la altura del árbol.
+
+### Funcionamiento
+
+- Recorre las ramas izquierda y derecha.
+- Compara cuál tiene mayor profundidad.
+- Devuelve la cantidad total de niveles.
+
+### Resultado
+
+Se obtiene la profundidad máxima del árbol.
+
+---
+
+# Código principal (App.java)
+
+Para construir el árbol se utilizó el siguiente arreglo:
+
+```java
+int[] numeros = {5, 3, 7, 2, 4, 6, 8};
+```
+
+Luego se llamó al método de inserción:
+
+```java
+InsertBSTTest ejercicioInsert = new InsertBSTTest();
+Node<Integer> root = ejercicioInsert.insert(numeros);
+```
+
+---
+
+# Evidencias de ejecución
+
+## Ejercicio 01
+
+Se muestra el árbol creado a partir del arreglo de números.
+
+## Ejercicio 02
+
+Se observa el árbol antes y después de invertirlo.
+
+## Ejercicio 03
+
+Se muestran los nodos organizados por niveles.
+
+## Ejercicio 04
+
+Se presenta la profundidad máxima obtenida.
+
+---
+
+# Capturas de pantalla
+
+![alt text](imagenes/image.png)
+
+---
+
+# Repositorio
+```
+https://github.com/josue4511/icc-est-u2-NoLineales.git
+```
+# Conclusión
+
+Con esta práctica se aprendió el funcionamiento de los árboles binarios y los árboles binarios de búsqueda. También se comprendió mejor el uso de la recursividad para recorrer y modificar estas estructuras.
+
+Además, se observó que los árboles permiten organizar los datos de forma ordenada y facilitan la búsqueda y el manejo de la información.
