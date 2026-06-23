@@ -1,6 +1,6 @@
 package structures.node;
 
-// NODO para árboles binarios
+
 public class Node<T> {
 
     private T value;

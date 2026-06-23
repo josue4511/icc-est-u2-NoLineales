@@ -1,6 +1,12 @@
+import java.util.List;
+
 import model.Person;
 import structures.node.Node;
 import trees.BinariTree;
+import trees.Ejercicio1;
+import trees.Ejercicio2;
+import trees.Ejercicio3;
+import trees.Ejercicio4;
 import trees.IntTree;
 
 public class App {
@@ -49,5 +55,42 @@ public class App {
         arbolNumeros.imprimirPorNiveles();
 
         System.out.println("\nAltura del árbol: " + arbolNumeros.getAltura());
-    }
+
+        System.out.println("\nÁrbol gráfico:");
+
+            Ejercicio1 ejercicio = new Ejercicio1();
+           
+
+            
+            Ejercicio1 e1 = new Ejercicio1();
+
+            System.out.println("\nÁrbol original:");
+           
+
+            Ejercicio2 e2 = new Ejercicio2();
+            
+
+            System.out.println("\nÁrbol invertido:");
+            
+            System.out.println("\nEjercicio 3 - Listar niveles");
+
+            Ejercicio3 e3 = new Ejercicio3();
+
+            List<List<Node<Integer>>> niveles = e3.listLevels(arbolNumeros.getRoot());
+
+            for (List<Node<Integer>> nivel : niveles) {
+
+                for (Node<Integer> nodo : nivel) {
+                    System.out.print(nodo.getValue() + " ");
+                }
+
+                System.out.println();
+                System.out.println("\nEjercicio 4 - Profundidad máxima");
+
+                Ejercicio4 e4 = new Ejercicio4();
+
+                System.out.println("Profundidad máxima: "
+                        + e4.maxDepth(arbolNumeros.getRoot()));
+}
+            }
 }
