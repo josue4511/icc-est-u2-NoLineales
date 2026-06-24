@@ -1,5 +1,8 @@
 import java.util.List;
+import java.util.Set;
 
+import collections.sets.Sets;
+import models.Contacto;
 import models.Person;
 import structures.node.Node;
 import trees.BinariTree;
@@ -13,9 +16,37 @@ import trees.IntTree;
 public class App {
 
     public static void main(String[] args) throws Exception {
-        runIntTree();
-        
+      //  runIntTree();
+     //runPersonTree();
+     runSets();    
+}      
+ private static void runSets() {
+        Sets sets = new Sets();
+   
+        System.out.println("Primera implemetacion de Set");
+        Set<String> hashSet = sets.construirHashSet();
+        System.out.println(hashSet);
+        System.out.println("Tamaño del HashSet: " + hashSet.size());
+        System.out.println("Contiene 'f': " + hashSet.contains("f"));
+        //Segunda implemetacion de Set LinkedHashSet
+        System.out.println("\nSegunda implemetacion de Set");
+        Set<String> linkedHashSet = sets.construirLinkedHashSet();
+        System.out.println(linkedHashSet);
+        System.out.println("Tamaño del LinkedHashSet: " + linkedHashSet.size());
+        System.out.println("Contiene 'A': " + linkedHashSet.contains("A"));
+         //Tercera implemetacion de Set TreeSet
+        System.out.println("\nTercera implemetacion de TreeSet");
+        Set<String> treeSet = sets.construirTreeSet();
+        System.out.println(treeSet);
+        System.out.println("Tamaño del TreeSet: " + treeSet.size());
+        System.out.println("Contiene 'A': " + treeSet.contains("A"));
+
+        System.out.println("TreSet");
+        Set<Contacto> treeSetConComparador = sets.construirTreesetConComparador();
+        System.out.println(treeSetConComparador);
+        System.out.println("Tamaño del TreeSet con comparador: " + treeSetConComparador.size());
     }
+    
 
 private static void runIntTree() {
 
@@ -111,4 +142,5 @@ private static void runIntTree() {
         System.out.println("\n--- ÁRBOL DE PERSONAS IN-ORDER ---");
         personTree.inOrder();
     }
-}
+ }
+
