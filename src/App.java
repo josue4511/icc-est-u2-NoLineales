@@ -1,6 +1,8 @@
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import collections.maps.Maps;
 import collections.sets.Sets;
 import models.Contacto;
 import models.Person;
@@ -18,8 +20,20 @@ public class App {
     public static void main(String[] args) throws Exception {
       //  runIntTree();
      //runPersonTree();
-     runSets();    
+     //runSets();   
+     runMaps();  
 }      
+private static void runMaps() {
+
+    Maps maps = new Maps();
+
+    System.out.println("\nIMPLEMENTACION DE MAP");
+
+    Map<String, Integer> hashMap = maps.construirHashMap();
+
+    System.out.println("HashMap final: " + hashMap);
+    System.out.println("Tamaño: " + hashMap.size());
+}
  private static void runSets() {
         Sets sets = new Sets();
    
@@ -45,6 +59,8 @@ public class App {
         Set<Contacto> treeSetConComparador = sets.construirTreesetConComparador();
         System.out.println(treeSetConComparador);
         System.out.println("Tamaño del TreeSet con comparador: " + treeSetConComparador.size());
+
+        
     }
     
 
