@@ -6,6 +6,7 @@ import collections.maps.Maps;
 import collections.sets.Sets;
 import models.Contacto;
 import models.Person;
+import structures.graphs.Graph;
 import structures.node.Node;
 import trees.BinariTree;
 import trees.Ejercicio1;
@@ -20,9 +21,27 @@ public class App {
     public static void main(String[] args) throws Exception {
       //  runIntTree();
      //runPersonTree();
-     //runSets();   
-     runMaps();  
-}      
+    // runSets();   
+     //runMaps();  
+     runGraph();
+}  
+
+private static void runGraph() {
+
+    Graph<String> graph = new Graph<>();
+
+    graph.addEdgeUni("A", "B");
+    graph.addEdgeUni("B", "C");
+    graph.addEdgeUni("B", "D");
+    graph.addEdgeUni("C", "A");
+    graph.addEdgeUni("C", "D");
+    graph.addEdgeUni("D", "C");
+    graph.addEdgeUni("D", "J");
+    graph.addEdgeUni("J", "D");
+
+    System.out.println("LISTA DE ADYACENCIA");
+    graph.printGraph();
+}
 private static void runMaps() {
 
     Maps maps = new Maps();
