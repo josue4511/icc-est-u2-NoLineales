@@ -1,6 +1,7 @@
 package models;
 
 public class Person implements Comparable<Person> {
+
     private String name;
     private int year;
 
@@ -27,12 +28,49 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person otraPersona) {
-        return Integer.compare(this.year, otraPersona.getYear());
 
+        int comparacion = Integer.compare(this.year, otraPersona.year);
+
+        if (comparacion == 0) {
+            comparacion = this.name.compareTo(otraPersona.name);
+        }
+
+        return comparacion;
     }
 
     @Override
     public String toString() {
-        return "Person{" + "name='" + name + '\'' + ", year=" + year + '}';
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", year=" + year +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + year;
+        hash = 31 * hash + (name != null ? name.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Person other = (Person) obj;
+
+        if (year != other.year) {
+            return false;
+        }
+
+        return name.equals(other.name);
     }
 }

@@ -49,6 +49,22 @@ public class Graph<T> {
         graph.get(nDestino).add(nOrigen);
     }
 
+    public Set<Node<T>> getVecinos(T dato) {
+        return graph.getOrDefault(new Node<>(dato), new LinkedHashSet<>());
+    }
+
+    public Set<Node<T>> getNodes() {
+        return graph.keySet();
+    }
+
+    public boolean contains(T dato) {
+        return graph.containsKey(new Node<>(dato));
+    }
+
+    public int size() {
+        return graph.size();
+    }
+
     public void printGraph() {
 
         for (Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()) {
@@ -56,12 +72,10 @@ public class Graph<T> {
             System.out.print(entry.getKey() + " -> ");
 
             for (Node<T> vecino : entry.getValue()) {
-                System.out.print(vecino);
+                System.out.print(vecino + " ");
             }
 
             System.out.println();
         }
-
     }
-
 }

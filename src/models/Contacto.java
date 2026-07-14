@@ -1,6 +1,6 @@
 package models;
 
-public class Contacto implements Comparable<Contacto>{
+public class Contacto implements Comparable<Contacto> {
 
     private String nombre;
     private String apellido;
@@ -37,54 +37,59 @@ public class Contacto implements Comparable<Contacto>{
     }
 
     @Override
-    public String toString() {
-        return "Contacto{" +
-                "" + nombre + '\'' +
-                ", " + apellido + '\'' +
-                ", " + telefono + '\'' +
-                '}';
+    public int compareTo(Contacto otro) {
+        int comparacion = this.nombre.compareTo(otro.nombre);
+
+        if (comparacion == 0) {
+            comparacion = this.apellido.compareTo(otro.apellido);
+        }
+
+        if (comparacion == 0) {
+            comparacion = this.telefono.compareTo(otro.telefono);
+        }
+
+        return comparacion;
     }
 
-    public int compareTo (Contacto otro){
-        return this.nombre.compareTo(otro.getNombre());
-
+    @Override
+    public String toString() {
+        return "Contacto{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-        result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-        result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
-        return result;
+        int hash = 7;
+        hash = 31 * hash + (nombre != null ? nombre.hashCode() : 0);
+        hash = 31 * hash + (apellido != null ? apellido.hashCode() : 0);
+        hash = 31 * hash + (telefono != null ? telefono.hashCode() : 0);
+        return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
-        if (getClass() != obj.getClass())
-            return false;
+        }
+
         Contacto other = (Contacto) obj;
-        if (nombre == null) {
-            if (other.nombre != null)
-                return false;
-        } else if (!nombre.equals(other.nombre))
+
+        if (!nombre.equals(other.nombre)) {
             return false;
-        if (apellido == null) {
-            if (other.apellido != null)
-                return false;
-        } else if (!apellido.equals(other.apellido))
+        }
+
+        if (!apellido.equals(other.apellido)) {
             return false;
-        if (telefono == null) {
-            if (other.telefono != null)
-                return false;
-        } else if (!telefono.equals(other.telefono))
-            return false;
-        return true;
+        }
+
+        return telefono.equals(other.telefono);
     }
-    
 }

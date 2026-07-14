@@ -38,6 +38,10 @@ public class Node<T> {
         this.right = right;
     }
 
+    public boolean isLeaf() {
+        return left == null && right == null;
+    }
+
     @Override
     public String toString() {
         return "N[" + value + "]";
@@ -46,11 +50,13 @@ public class Node<T> {
     @Override
     public boolean equals(Object obj) {
 
-        if (this == obj)
+        if (this == obj) {
             return true;
+        }
 
-        if (obj == null || getClass() != obj.getClass())
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
+        }
 
         Node<?> other = (Node<?>) obj;
 
